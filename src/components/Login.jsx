@@ -8,6 +8,7 @@ const Login = ({setToken}) => {
     const [password, setPassword] = useState('');
     const onSubmitHandler = async (e) => {
         e.preventDefault();
+        console.log("Backend URL:", backendURL);
         try {
             const response = await axios.post(backendURL + '/api/user/admin', { email, password });
             console.log(response.data);
@@ -20,6 +21,7 @@ const Login = ({setToken}) => {
         } catch (error) {
            console.log(error);
            toast.error(error.message); 
+           console.log("Error Code:", error.code);
         }
     }
     return (
